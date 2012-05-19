@@ -68,6 +68,8 @@
 			<string>All</string>
 		</dict>
 	</dict>
+	<key>Update Manifest URL</key>
+	<string>https://raw.github.com/hnakamur/FormatLink-Safari/master/UpdateManifest.plist</string>
 	<key>Website</key>
 	<string>https://github.com/hnakamur/FormatLink-Safari</string>
 </dict>

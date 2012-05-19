@@ -8,7 +8,7 @@
 		<key>Key</key>
 		<string>defaultFormat</string>
 		<key>Title</key>
-		<string>Default format</string>
+		<string>Default Format</string>
 		<key>Titles</key>
 		<array>
 			<string>Format1</string>
@@ -76,7 +76,7 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>return '"'+title.replace(/"/g,'&amp;quot;').replace(/\[/g,'&amp;#91;')+'":'+url</string>
+		<string>return '"'+title.replace(/"/g,'&amp;amp;quot;').replace(/\[/g,'&amp;amp;#91;')+'":'+url</string>
 		<key>Key</key>
 		<string>format2</string>
 		<key>Title</key>
@@ -90,7 +90,7 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>Text</string>
+		<string>HTML</string>
 		<key>Key</key>
 		<string>title3</string>
 		<key>Title</key>
@@ -100,7 +100,7 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>return title+"\n"+url</string>
+		<string>return '&lt;a href="'+url.replace(/"/g,'&amp;quot;')+'"&gt;'+title.replace(/&lt;/g,'&amp;lt;')+'&lt;/a&gt;'</string>
 		<key>Key</key>
 		<string>format3</string>
 		<key>Title</key>
@@ -113,6 +113,8 @@
 		<string>Separator</string>
 	</dict>
 	<dict>
+		<key>DefaultValue</key>
+		<string>Text</string>
 		<key>Key</key>
 		<string>title4</string>
 		<key>Title</key>
@@ -121,6 +123,8 @@
 		<string>TextField</string>
 	</dict>
 	<dict>
+		<key>DefaultValue</key>
+		<string>return title+"\n"+url</string>
 		<key>Key</key>
 		<string>format4</string>
 		<key>Title</key>

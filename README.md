@@ -19,6 +19,8 @@ Here are examples:
     * ```return '['+title.replace(/\[/g,'\\[').replace(/\]/g,'\\]')+']('+url.replace(/\)/g,'%29')+')'```
 * Redmine Textile
     * ```return '"'+title.replace(/"/g,'&quot;').replace(/\[/g,'&#91;')+'":'+url```
+* HTML
+    * ```return '<a href="'+url.replace(/"/g,'&quot;')+'">'+title.replace(/</g,'&lt;')+'</a>'```
 * Text
     * ```return title+"\n"+url```
 
