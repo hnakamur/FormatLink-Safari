@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8' />
+    <meta http-equiv="X-UA-Compatible" content="chrome=1" />
+    <meta name="description" content="Formatlink-safari : Format the url and the title of the Safari active tab" />
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Formatlink-safari</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/hnakamur/FormatLink-Safari">View on GitHub</a>
+
+          <h1 id="project_title">Formatlink-safari</h1>
+          <h2 id="project_tagline">Format the url and the title of the Safari active tab</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/hnakamur/FormatLink-Safari/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/hnakamur/FormatLink-Safari/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <h1>Format Link for Safari</h1>
+
+<h2>Why do I need it?</h2>
+
+<p>To format the link of the active tab instantly to use in Markdown, Textile or other formats.</p>
+
+<h2>How to use</h2>
+
+<ol>
+<li>Press the toolbar icon of "Format Link".</li>
+<li>When a popup opens, press Command-C to copy the formatted link to the clipboard.</li>
+</ol><p>Also you can change the format for one time only with selecting the format in the dropdown list.</p>
+
+<h2>Flexible settings</h2>
+
+<p>You can modify formats in [Safari]/[Preferences] -&gt; [Extensions].
+In format settings, you can write Javascript function bodies, to which arguments <code>url</code> and <code>title</code> are passed.</p>
+
+<p>Here are examples:</p>
+
+<ul>
+<li>Markdown
+
+<ul>
+<li><code>return '['+title.replace(/\[/g,'\\[').replace(/\]/g,'\\]')+']('+url.replace(/\)/g,'%29')+')'</code></li>
+</ul>
+</li>
+<li>Redmine Textile
+
+<ul>
+<li><code>return '"'+title.replace(/"/g,'&amp;quot;').replace(/\[/g,'&amp;#91;')+'":'+url</code></li>
+</ul>
+</li>
+<li>HTML
+
+<ul>
+<li><code>return '&lt;a href="'+url.replace(/"/g,'&amp;quot;')+'"&gt;'+title.replace(/&lt;/g,'&amp;lt;')+'&lt;/a&gt;'</code></li>
+</ul>
+</li>
+<li>Text
+
+<ul>
+<li><code>return title+"\n"+url</code></li>
+</ul>
+</li>
+</ul><h2>License</h2>
+
+<p>MIT License.</p>
+
+<h2>Icon credits</h2>
+
+<p>I synthesized two icons (a pencil and a link) to produce <code>Icon.png</code>.</p>
+
+<ul>
+<li>A pencil icon from <a href="http://www.icojoy.com/articles/44/">Onebit free icon set</a> © 2010 <a href="http://www.icojoy.com/">Khodjaev Stanislav</a>, used under a License: These icons are free to use in any kind of commercial or non-commercial project unlimited times.</li>
+<li>A link icon from <a href="http://pc.de/icons/#Bremen">Bremen icon set</a> © 2010 <a href="http://pc.de/icons/">Patricia Clausnitzer</a>, used under a <a>Creative Commons Attribution 3.0 License</a>
+</li>
+</ul>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Formatlink-safari maintained by <a href="https://github.com/hnakamur">hnakamur</a></p>
+        <p>Published with <a href="http://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
