@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Author</key>
+	<string>Hiroaki Nakamura</string>
+	<key>Builder Version</key>
+	<string>7534.57.2</string>
+	<key>CFBundleDisplayName</key>
+	<string>Format Link</string>
+	<key>CFBundleIdentifier</key>
+	<string>net.naruh.formatlink.safari</string>
+	<key>CFBundleInfoDictionaryVersion</key>
+	<string>6.0</string>
+	<key>CFBundleShortVersionString</key>
+	<string>1.0</string>
+	<key>CFBundleVersion</key>
+	<string>1</string>
+	<key>Chrome</key>
+	<dict>
+		<key>Global Page</key>
+		<string>popover.html</string>
+		<key>Popovers</key>
+		<array>
+			<dict>
+				<key>Filename</key>
+				<string>popover.html</string>
+				<key>Height</key>
+				<real>146</real>
+				<key>Identifier</key>
+				<string>popover</string>
+				<key>Width</key>
+				<real>400</real>
+			</dict>
+		</array>
+		<key>Toolbar Items</key>
+		<array>
+			<dict>
+				<key>Identifier</key>
+				<string>FormatLinkToolbar</string>
+				<key>Image</key>
+				<string>ToolbarIcon.png</string>
+				<key>Label</key>
+				<string>Format Link</string>
+				<key>Menu</key>
+				<string></string>
+				<key>Popover</key>
+				<string>popover</string>
+			</dict>
+		</array>
+	</dict>
+	<key>Content</key>
+	<dict>
+		<key>Scripts</key>
+		<dict/>
+	</dict>
+	<key>Description</key>
+	<string>Format the URL and the title for copying to the clipboard.</string>
+	<key>ExtensionInfoDictionaryVersion</key>
+	<string>1.0</string>
+	<key>Permissions</key>
+	<dict>
+		<key>Website Access</key>
+		<dict>
+			<key>Include Secure Pages</key>
+			<true/>
+			<key>Level</key>
+			<string>All</string>
+		</dict>
+	</dict>
+	<key>Website</key>
+	<string>https://github.com/hnakamur/FormatLink-Safari</string>
+</dict>
+</plist>
