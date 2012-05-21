@@ -9,7 +9,7 @@
 	<key>CFBundleDisplayName</key>
 	<string>Format Link</string>
 	<key>CFBundleIdentifier</key>
-	<string>net.naruh.formatlink.safari</string>
+	<string>com.appspot.format-link</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleShortVersionString</key>
@@ -69,7 +69,7 @@
 		</dict>
 	</dict>
 	<key>Update Manifest URL</key>
-	<string>https://raw.github.com/hnakamur/FormatLink-Safari/master/UpdateManifest.plist</string>
+	<string>http://format-link.appspot.com/xml/UpdateManifest.plist</string>
 	<key>Website</key>
 	<string>https://github.com/hnakamur/FormatLink-Safari</string>
 </dict>
