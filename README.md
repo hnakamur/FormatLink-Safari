@@ -11,18 +11,30 @@ Also you can change the format for one time only with selecting the format in th
 
 ## Flexible settings
 You can modify formats in [Safari]/[Preferences] -> [Extensions].
-In format settings, you can write Javascript function bodies, to which arguments ```url``` and ```title``` are passed.
+In format settings, you can use the mini template language.
+
+* {{variable}}
+    * variable = title / url
+    * No spaces are allowed.
+* {{variable.s("foo","bar")}}
+    * Which means variable.replace(new RegExp("foo", 'g'), "bar")
+    * You can use escape character \ in strings.
+    * You must escape the first argument for string and regexp.
+      For example, .s("\\[","\\[") means replacing [ with \\[
+    * You can chain multiple .s("foo","bar")
+* You can use the escape character \
+* Other characters are treated as literal strings.
 
 Here are examples:
 
 * Markdown
-    * ```return '['+title.replace(/\[/g,'\\[').replace(/\]/g,'\\]')+']('+url.replace(/\)/g,'%29')+')'```
+    * ```[{{title.s("\\[","\\[").s("\\]","\\]")}}]({{url.s("\\)","%29")}})```
 * Redmine Textile
-    * ```return '"'+title.replace(/"/g,'&quot;').replace(/\[/g,'&#91;')+'":'+url```
+    * ```"{{title.s("\"","&quot;").s("\\[","&#91;")}}":{{url}}```
 * HTML
-    * ```return '<a href="'+url.replace(/"/g,'&quot;')+'">'+title.replace(/</g,'&lt;')+'</a>'```
+    * ```<a href="{{url.s("\"","&quot;")}}">{{title.s("<","&lt;")}}</a>```
 * Text
-    * ```return title+"\n"+url```
+    * ```{{title}}\n{{url}}```
 
 ## License
 MIT License.

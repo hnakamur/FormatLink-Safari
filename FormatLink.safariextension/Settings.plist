@@ -52,7 +52,7 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>return '['+title.replace(/\[/g,'\\[').replace(/\]/g,'\\]')+']('+url.replace(/\)/g,'%29')+')'</string>
+		<string>[{{title.s("\\[","\\[").s("\\]","\\]")}}]({{url.s("\\)","%29")}})</string>
 		<key>Key</key>
 		<string>format1</string>
 		<key>Title</key>
@@ -76,7 +76,7 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>return '"'+title.replace(/"/g,'&amp;amp;quot;').replace(/\[/g,'&amp;amp;#91;')+'":'+url</string>
+		<string>"{{title.s("\"","&amp;quot;").s("\\[","&amp;#91;")}}":{{url}}</string>
 		<key>Key</key>
 		<string>format2</string>
 		<key>Title</key>
@@ -100,7 +100,7 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>return '&lt;a href="'+url.replace(/"/g,'&amp;quot;')+'"&gt;'+title.replace(/&lt;/g,'&amp;lt;')+'&lt;/a&gt;'</string>
+		<string>&lt;a href="{{url.s("\"","&amp;quot;")}}"&gt;{{title.s("&lt;","&amp;lt;")}}&lt;/a&gt;</string>
 		<key>Key</key>
 		<string>format3</string>
 		<key>Title</key>
@@ -124,7 +124,7 @@
 	</dict>
 	<dict>
 		<key>DefaultValue</key>
-		<string>return title+"\n"+url</string>
+		<string>{{title}}\n{{url}}</string>
 		<key>Key</key>
 		<string>format4</string>
 		<key>Title</key>
