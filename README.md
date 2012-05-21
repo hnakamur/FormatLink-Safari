@@ -38,6 +38,7 @@ Here are examples:
 
 ## License
 MIT License.
+Source codes are hosted at [Github](https://github.com/hnakamur/FormatLink-Safari)
 
 ## Icon credits
 I synthesized two icons (a pencil and a link) to produce ```Icon.png```.
