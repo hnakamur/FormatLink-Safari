@@ -1,30 +1,74 @@
+safari.application.addEventListener("validate", validateHandler, false);
+function validateHandler(event) {
+  var button = elem('saveDefaultFormatButton')
+  saveDefaultFormatButton.addEventListener('click', saveDefaultFormat);
+  populateFormatGroup();
+
+//  var textLabel = elem('textLabel');
+//  var popover = safari.extension.popovers[0];
+//  console.log('textLabel.offsetTop=' + textLabel.offsetTop);
+//  console.log('button.offsetTop=' + button.offsetTop);
+//  console.log('button.clientHeight=' + button.clientHeight);
+//  popover.height = button.offsetTop + button.clientHeight -
+//    textLabel.offsetTop + 20;
+//  console.log('popover.height=' + popover.height);
+}
+
 safari.application.addEventListener("popover", popoverHandler, false);
 function popoverHandler(event) {
-  populateFormatSelect();
   var formatId = safari.extension.settings.defaultFormat;
   populateTextToCopy(formatId);
+}
+
+function getOption(name) {
+  return safari.extension.settings[name];
+}
+
+function elem(id) {
+  return document.getElementById(id);
 }
 
 var MIN_FORMAT_ID = 1,
     MAX_FORMAT_ID = 9;
 
-function populateFormatSelect() {
-  var elem = document.getElementById('formatSelect');
-  var settings = safari.extension.settings;
-  for (var id = MIN_FORMAT_ID; id <= MAX_FORMAT_ID; ++id) {
-    var title = settings['title' + id];
-    var format = settings['format' + id];
-    if (title === undefined || format === undefined) {
+function getFormatCount() {
+  var i;
+  for (i = MIN_FORMAT_ID; i <= MAX_FORMAT_ID; ++i) {
+    var optTitle = getOption('title' + i);
+    var optFormat = getOption('format' + i);
+    if (optTitle === undefined || optFormat === undefined) {
       break;
     }
-    elem.options[id - 1] = new Option(title, id);
   }
-  var defaultFormatId = safari.extension.settings.defaultFormat;
-  elem.selectedIndex = defaultFormatId - 1;
-  elem.addEventListener('change', function() {
-    var formatId = elem.options[elem.selectedIndex].value;
-    populateTextToCopy(formatId);
-  });
+  return i - 1;
+}
+
+function populateFormatGroup() {
+  var tab = safari.application.activeBrowserWindow.activeTab;
+  var title = tab.title;
+  var url = tab.url;
+  var defaultFormat = getOption('defaultFormat');
+  var radios = [];
+  var cnt = getFormatCount();
+  for (var i = 1; i <= cnt; ++i) {
+    var optTitle = getOption('title' + i);
+    var radioId = 'format' + i;
+    radios.push('<span class="radio"><input type="radio" name="format" id="' +
+        radioId + '" value="' + i + '"' +
+        (i == defaultFormat ? ' checked' : '') +
+        '><label for="' + radioId + '">' + optTitle.replace(/</g, '&lt;') +
+        '</label></input></span>');
+  }
+  var group = elem('formatGroup');
+  group.innerHTML = radios.join('');
+
+  for (var i = 1; i <= radios.length; ++i) {
+    var radioId = 'format' + i;
+    elem(radioId).addEventListener('click', function(e) {
+      var formatId = e.target.value;
+      populateTextToCopy(formatId);
+    });
+  }
 }
 
 function populateTextToCopy(formatId) {
@@ -33,13 +77,30 @@ function populateTextToCopy(formatId) {
   var url = tab.url;
   var format = safari.extension.settings['format' + formatId];
   var text = formatUrl(format, title, url);
-//  var text = formatUrl(format, '["foo"]("this is title")', 'https://example.com/?foo=<bar>(baz)');
   var textElem = document.getElementById('textToCopy');
   textElem.value = text;
-  setTimeout(function() {
-    textElem.focus();
-    textElem.select();
-  }, 0);
+  setTimeout(selectTextToCopy, 0);
+}
+
+function selectTextToCopy() {
+  var textElem = document.getElementById('textToCopy');
+  textElem.focus();
+  textElem.select();
+}
+
+function getSelectedFormat() {
+  var cnt = getFormatCount();
+  for (var i = 1; i <= cnt; ++i) {
+    if (elem('format' + i).checked) {
+      return i;
+    }
+  }
+  return undefined;
+}
+
+function saveDefaultFormat() {
+  safari.extension.settings.defaultFormat = getSelectedFormat();
+  selectTextToCopy();
 }
 
 function formatUrl(format, title, url) {

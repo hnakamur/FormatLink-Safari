@@ -6,14 +6,18 @@
 label {
   font: 90% 'Lucida Grande',Geneva,Helvetica,Arial,sans-serif
 }
+span.radio {
+  margin: 0 4px 0 4px;
+}
 </style>
 <script type="text/javascript" src="popover.js"></script>
 </head>
 <body>
-<label for="textToCopy">Press Command-C to copy!</label>
+<label for="textToCopy" id="textLabel">Press Command-C to copy!</label>
 <textarea id="textToCopy" cols="52" rows="6"></textarea>
-
-<label for="formatSelect">Switch format only this time:</label>
-<select id="formatSelect"></select>
+<label for="formatGroup">Switch format:</label>
+<div id="formatGroup"></div>
+<button id="saveDefaultFormatButton">Save as Default</button>
+</div>
 </body>
 </html>
